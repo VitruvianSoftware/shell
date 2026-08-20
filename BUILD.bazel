@@ -1,0 +1,16 @@
+"""Targets in the repository root"""
+
+exports_files(
+    [
+        ".shellcheckrc",
+    ],
+    visibility = ["//:__subpackages__"],
+)
+
+# The gazelle binary + `gazelle` runner target live in //tools/gazelle (the
+# default target for `aspect gazelle`). Run `aspect gazelle` to generate BUILDs.
+
+# Hand-authored Pulumi macro + a standalone Pulumi Go module (its own go.mod):
+# gazelle must not generate or rewrite BUILD files in either.
+# gazelle:exclude infrastructure
+# gazelle:exclude tools/pulumi
